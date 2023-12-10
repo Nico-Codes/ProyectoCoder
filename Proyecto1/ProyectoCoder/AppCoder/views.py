@@ -31,3 +31,4 @@ def cursos_formulario(request):
 
     return render(request, 'AppCoder/cursos_formulario.html', {"mi_formulario": mi_formulario})
 
+
