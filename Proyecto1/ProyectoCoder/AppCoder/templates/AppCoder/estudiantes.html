@@ -1,11 +1,37 @@
 {% extends 'AppCoder/padre.html' %}
-
 {% load static %}
+{% load cripsy_forms_tags %}
 
 {% block contenidoQueCambia %}
 
 <h1>Pagina Estudiantes</h1>
 <p>Se ha heredado todo desde la plantilla padre</p>
 
+{% if form.errors %}
+
+<div class="alert alert-danger" role="alert">
+    This is a danger alert—check it out!
+  </div>
+
+{% endif %}
+
+<h1> Registro de Estudiantes</h1>
+
+<form action="{% url 'guardarEstudiante' % }" method="post">
+
+    {% csrf_token %}
+    {% if mensaje %}
+
+    <div class="alert alert-success" role="alert">
+        Estudiante registrado exitosamente!
+      </div>
+
+    {% endif %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+</form>
 
 {% endblock contenidoQueCambia %}
