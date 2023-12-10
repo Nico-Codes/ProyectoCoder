@@ -4,8 +4,19 @@
 
 {% block contenidoQueCambia %}
 
-<h1>Pagina Cursos</h1>
-<p>Se ha heredado todo desde la plantilla padre</p>
-<h3>En el hijo, inicio.html, casi no hay nada :)</h3>
+    <h1>Pagina Cursos</h1>
+    <p>Se ha heredado todo desde la plantilla padre</p>
+ 
+
+    {% if mi_formulario.errors %}
+    <p style="color: red;">Estan mal los datos, revisar</p>
+    {% endif %}
+    
+    <form action="" method="post"> {% csrf_token %}
+        <table>
+            {{mi_formulario.as_table}}
+        </table>
+        <input type="submit" value="Enviar">
+    </form>
 
 {% endblock contenidoQueCambia %}
